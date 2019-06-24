@@ -6,9 +6,9 @@ if (process.env.NODE_ENV !== "production") {
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Garb`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `JZ`,
+    title: `klickcheck - Schäden dokumentieren per App`,
+    description: `Jetzt Übergabeprotokoll per App abwickeln ✔ Mit klickcheck vereinfachen Vermieter die Ausgabe & Rücknahme von Baumaschinen - Noch heute testen!`,
+    author: `Jörg Zeipelt`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -52,7 +52,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/klickcheck.png`, // This path is relative to the root of the site.
       },
     },
     {
@@ -62,6 +62,13 @@ module.exports = {
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/components/typography`,
+      },
+    },
+    `gatsby-plugin-styled-components`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // 'gatsby-plugin-offline',

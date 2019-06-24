@@ -10,7 +10,8 @@ import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
-import "./layout.css"
+import Footer from "./footer"
+import "./default.css"
 
 const getSiteMetaData = graphql`
   {
@@ -29,7 +30,7 @@ const Layout = ({ children }) => (
     render={data => (
       <>
         <Header siteTitle={data.site.siteMetadata.title} />
-        <div
+        <main
           style={{
             margin: `0 auto`,
             maxWidth: 960,
@@ -37,12 +38,9 @@ const Layout = ({ children }) => (
             paddingTop: 0,
           }}
         >
-          <main>{children}</main>
-          <footer>
-            © {new Date().getFullYear()}, Built by{" "}
-            {data.site.siteMetadata.author}
-          </footer>
-        </div>
+          {children}
+        </main>
+        <Footer siteAuthor={data.site.siteMetadata.author} />
       </>
     )}
   />
