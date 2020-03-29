@@ -5,13 +5,5 @@
   transition-duration: 0.3s;
   transition-timing-function: ease;
   transition-delay: 0s;
-  margin: 0;
-  border: 1px dotted black;
-}
-a {
-  color: inherit;
-  text-decoration: none;
-}
-a:hover {
-  color: #00aeef;
+  margin: 0 auto;
 }

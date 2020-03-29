@@ -1,0 +1,11 @@
+{
+  "development": {
+    "host": "preview.contentful.com",
+    "spaceId": "process.env.CONTENTFUL_SPACE_ID",
+    "accessToken": "process.env.CONTENTFUL_ACCESS_TOKEN"
+  },
+  "production": {
+    "spaceId": "process.env.CONTENTFUL_SPACE_ID",
+    "accessToken": "process.env.CONTENTFUL_ACCESS_TOKEN"
+  }
+}

@@ -6,12 +6,15 @@
  */
 
 import React from "react"
-import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
+import { ThemeProvider, makeStyles } from "@material-ui/core/styles"
+import { Box, CssBaseline } from "@material-ui/core"
+import SEO from "../components/seo"
 
+import Klickcheck from "./klickcheck-theme"
 import Header from "./header"
 import Footer from "./footer"
-import "./default.css"
+import { StateProvider } from '../hooks/store'
 
 const getSiteMetaData = graphql`
   {
@@ -24,30 +27,34 @@ const getSiteMetaData = graphql`
   }
 `
 
-const Layout = ({ children }) => (
-  <StaticQuery
-    query={getSiteMetaData}
-    render={data => (
-      <>
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <main
-          style={{
-            margin: `0 auto`,
-            maxWidth: 960,
-            padding: `0px 1.0875rem 1.45rem`,
-            paddingTop: 0,
-          }}
-        >
-          {children}
-        </main>
-        <Footer siteAuthor={data.site.siteMetadata.author} />
-      </>
-    )}
-  />
-)
+const useStyles = makeStyles(theme => ({
+  main: {
+    padding: theme.spacing(2),
+  },
+}))
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+export default function Layout({ title, children }) {
+  const classes = useStyles()
+
+  return (
+    <StaticQuery
+      query={getSiteMetaData}
+      render={data => (
+        <StateProvider>
+          <ThemeProvider theme={Klickcheck}>
+            <SEO
+              title={title}
+              keywords={[`klickcheck`, `Schadensdokumentation`]}
+            />
+            <CssBaseline />
+            <Header className={classes.header} />
+            <Box component="main" className={classes.main}>
+              {children}
+            </Box>
+            <Footer className={classes.footer} />
+          </ThemeProvider>
+        </StateProvider>
+      )}
+    />
+  )
 }
-
-export default Layout
